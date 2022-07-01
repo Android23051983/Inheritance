@@ -1,84 +1,11 @@
 #include "Stdafx.h"
 #include "Human.h"
 #include "Student.h"
-#include "Teacher.h"
-#include "Graduate.h"
+//#include "Teacher.h"
+//#include "Graduate.h"
 
 
 
-class Student :public Human
-{
-
-	std::string specialty;
-	std::string group;
-	unsigned int year;
-	float rating;
-	float attendance;
-public:
-	const std::string& get_specialty()const
-	{
-		return specialty;
-	}
-	const std::string& get_group()const
-	{
-		return group;
-	}
-	unsigned int get_year()const
-	{
-		return year;
-	}
-	float get_rating()const
-	{
-		return rating;
-	}
-	float get_attendance()const
-	{
-		return attendance;
-	}
-
-	void set_specialty(const std::string& specialty)
-	{
-		this->specialty = specialty;
-	}
-	void set_group(const std::string& group)
-	{
-		this->group = group;
-	}
-	void set_year(unsigned int year)
-	{
-		this->year = year;
-	}
-	void set_rating(float rating)
-	{
-		this->rating = rating;
-	}
-	void set_attendance(float attendance)
-	{
-		this->attendance = attendance;
-	}
-
-	Student(HUMAN_PARAMETERS,STUDENT_PARAMETERS):Human(HUMAN_ARGUMENTS) 
-	{
-		set_specialty(specialty);
-		set_group(group);
-		set_year(year);
-		set_rating(rating);
-		set_attendance(attendance);
-		cout << "SConstructor:\t" << this << endl;
-	}
-	~Student()
-	{
-		cout << "SDestrucror:\t" << this << endl;
-	}
-	void info()const
-	{
-		Human::info();
-		cout << specialty << " " << group << " " << year << " " << rating << " " << attendance << endl;
-	}
-};
-
-#define TEACHER_PARAMETERS const std::string& specialty, unsigned int eperience
-#define TEACHER_ARGUMENTS specialty, eperience
 
 class Teacher :public Human
 {

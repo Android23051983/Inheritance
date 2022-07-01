@@ -1,7 +1,9 @@
 #pragma once
 #include "Stdafx.h"
+#include "Human.h"
+#include "Human_define.h"
 #include "Student_define.h"
-
+#include "Student.h"
 class Student :public Human
 {
 

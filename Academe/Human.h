@@ -1,6 +1,7 @@
 #pragma once
 #include "Stdafx.h"
 #include "Human_define.h"
+
 class Human
 {
 	std::string last_name;

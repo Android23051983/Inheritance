@@ -144,6 +144,7 @@
     <ClInclude Include="Student.h" />
     <ClInclude Include="Student_define.h" />
     <ClInclude Include="Teacher.h" />
+    <ClInclude Include="Teacher_define.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

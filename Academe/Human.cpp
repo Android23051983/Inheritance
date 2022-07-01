@@ -1,4 +1,4 @@
-
+#define "Stdafx.h"
 #include "Human.h"
 #include "Human_define.h"
 
