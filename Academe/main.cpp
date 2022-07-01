@@ -45,11 +45,11 @@ public:
 		cout << "HConstructor:\t" << this << endl;
 
 	}
-	~Human()
+	virtual ~Human()
 	{
 		cout << "HDestructor:\t" << this << endl;
 	}
-	void info()const
+	virtual void info()const
 	{
 		cout << last_name << " " << first_name << " " << age << " " << "yars\n";
 	}
@@ -202,6 +202,10 @@ public:
 
 //#define INHERITANCE_CHECK
 
+//Polymorphism (многоформенность: poly -много, morphis - форма).
+//1. ”казатели на базовый класс - Generalisation;
+//2. ¬иртуальные методы - Specialization;
+
 void main()
 {
 	setlocale(LC_ALL, "");
@@ -217,12 +221,34 @@ void main()
 	walter.info();
 
 	cout << "\n-------------------- - \n" << endl;
-	Graduate hank("Schrader", "Hank", 40, "Criminalistic", "WW_220", 5, 89, 80, "How to catch Hejsenderg");
+	Graduate hank("Schrader", "Hank", 40, "Criminalistic", "WW_220", 5, 89, 80, "How to catch Heisenberg");
 	hank.info();
 	cout << "\n-------------------- - \n" << endl;
 #endif // INHERITANCE_CHECK
 
 	//Generalisation:
 
+	Human* group[] =
+	{
+		// Upcast - преобразование к базовому типу:
+		new Student("Pinkman", "Jessie", 25, "Chemistry", "WW_220", 1, 70, 90),
+		new Teacher("White", "Whalter", 50, "Chemistry", 25),
+		new Graduate("Schrader", "Hank", 40, "Criminalistic", "WW_220", 5, 89, 80, "How to catch Heisenberg"),
+		new Student("Vercetti", "Tomas", 30, "Criminal", "Vice", 2, 95, 98)
+	};
+	
+	cout << "\n-------------------------------------------------------\n";
+	
+	for (int i = 0; i < sizeof(group) / sizeof(group[0]); i++)
+	{
+		group[i]->info();
+		cout << "\n-------------------------------------------------------\n";
+	}
 
+	for (int i = 0; i < sizeof(group) / sizeof(group[0]); i++)
+	{
+	
+		delete group[i];
+
+	}
 }
