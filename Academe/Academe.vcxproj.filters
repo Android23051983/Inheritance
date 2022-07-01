@@ -47,5 +47,14 @@
     <ClInclude Include="Graduate.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Human_define.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Student_define.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

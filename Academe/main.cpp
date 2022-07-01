@@ -1,62 +1,10 @@
-#include<iostream>
+#include "Stdafx.h"
+#include "Human.h"
+#include "Student.h"
+#include "Teacher.h"
+#include "Graduate.h"
 
-using namespace std;
 
-#define HUMAN_PARAMETERS const std::string& last_name, const std::string& first_name, unsigned int age
-#define HUMAN_ARGUMENTS last_name, first_name, age
-
-
-class Human
-{
-	std::string last_name;
-	std::string first_name;
-	unsigned int  age;
-public:
-	const std::string& get_last_name()const
-	{
-		return last_name;
-	}
-	const std::string& get_first_name()const
-	{
-		return first_name;
-	}
-	unsigned int get_age()const
-	{
-		return age;
-	}
-	void set_last_name(const std::string& last_name)
-	{
-		this->last_name = last_name;
-	}
-	void set_first_name(const std::string& first_name)
-	{
-		this->first_name = first_name;
-	}
-	void set_age(unsigned int age)
-	{
-		this->age = age;
-	}
-
-	Human(HUMAN_PARAMETERS)
-	{
-		set_last_name(last_name);
-		set_first_name(first_name);
-		set_age(age);
-		cout << "HConstructor:\t" << this << endl;
-
-	}
-	~Human()
-	{
-		cout << "HDestructor:\t" << this << endl;
-	}
-	void info()const
-	{
-		cout << last_name << " " << first_name << " " << age << " " << "yars\n";
-	}
-};
-
-#define STUDENT_PARAMETERS const std::string& specialty, const std::string& group, unsigned int year, float rating, float attendance
-#define STUDENT_ARGUMENTS specialty, group,  year, rating, attendance
 
 class Student :public Human
 {
