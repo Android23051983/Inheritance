@@ -1,24 +1,24 @@
-#define "Stdafx.h"
+#include "Stdafx.h"
 #include "Human.h"
-#include "Human_define.h"
 
-const Human::string& get_last_name()const
+
+const string& Human::get_last_name()const
 {
 	return last_name;
 }
-const Human::string& get_first_name()const
+const string& Human::get_first_name()const
 {
 	return first_name;
 }
-unsigned int get_age()const
+unsigned int Human::get_age()const
 {
 	return age;
 }
-void Human::set_last_name(const std::string& last_name)
+void Human::set_last_name(const string& last_name)
 {
 	this->last_name = last_name;
 }
-void Human::set_first_name(const std::string& first_name)
+void Human::set_first_name(const string& first_name)
 {
 	this->first_name = first_name;
 }

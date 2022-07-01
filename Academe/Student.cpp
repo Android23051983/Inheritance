@@ -1,6 +1,5 @@
-#include "Human_define.h"
+
 #include "Human.h"
-#include "Student_define.h"
 #include "Student.h"
 
 const string& Student::get_specialty()const
@@ -24,11 +23,11 @@ float Student::get_attendance()const
 	return attendance;
 }
 
-void Student::set_specialty(const std::string& specialty)
+void Student::set_specialty(const string& specialty)
 {
 	this->specialty = specialty;
 }
-void Student::set_group(const std::string& group)
+void Student::set_group(const string& group)
 {
 	this->group = group;
 }

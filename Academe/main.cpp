@@ -1,19 +1,20 @@
 #include "Stdafx.h"
 #include "Human.h"
 #include "Student.h"
-//#include "Teacher.h"
 //#include "Graduate.h"
 
 
+#define TEACHER_PARAMETERS const std::string& specialty, unsigned int eperience
+#define TEACHER_ARGUMENTS specialty, eperience
 
 
 class Teacher :public Human
 {
 
-	std::string specialty;
+	string specialty;
 	unsigned int experience;
 public:
-	const std::string& get_specialty()const
+	const string& get_specialty()const
 	{
 		return specialty;
 	}
@@ -22,7 +23,7 @@ public:
 		return experience;
 	}
 
-	void set_specialty(const std::string& specialty)
+	void set_specialty(const string& specialty)
 	{
 		this->specialty = specialty;
 	}
