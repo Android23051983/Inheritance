@@ -142,7 +142,6 @@
     <ClInclude Include="Stdafx.h" />
     <ClInclude Include="Student.h" />
     <ClInclude Include="Teacher.h" />
-    <ClInclude Include="Teacher_define.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

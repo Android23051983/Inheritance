@@ -27,7 +27,7 @@ public:
 	void set_rating(float rating);
 	void set_attendance(float attendance);
 
-	Student(HUMAN_PARAMETERS, STUDENT_PARAMETERS) :Human(HUMAN_ARGUMENTS);
+	Student(HUMAN_PARAMETERS, STUDENT_PARAMETERS);
 	~Student();
 	void info()const;
 };

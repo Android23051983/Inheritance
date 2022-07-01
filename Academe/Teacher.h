@@ -8,7 +8,6 @@
 
 class Teacher :public Human
 {
-
 	string specialty;
 	unsigned int experience;
 public:
@@ -17,10 +16,7 @@ public:
 
 	void set_specialty(const string& specialty);
 	void set_experience(unsigned int experience);
-	Teacher(HUMAN_PARAMETERS, TEACHER_PARAMETERS) :Human(HUMAN_ARGUMENTS)
-	{
-		set_specialty(specialty);
-	}
+	Teacher(HUMAN_PARAMETERS, TEACHER_PARAMETERS);
 	~Teacher();
 
 	void info()const;
