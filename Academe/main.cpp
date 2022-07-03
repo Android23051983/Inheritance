@@ -55,6 +55,11 @@ public:
 	}
 };
 
+std::ostream&  operator<<(std::ostream& os, const Human& obj)
+{
+	return os << obj.get_last_name() << " " << obj.get_first_name() << " " << obj.get_age();
+}
+
 #define STUDENT_PARAMETERS const std::string& specialty, const std::string& group, unsigned int year, float rating, float attendance
 #define STUDENT_ARGUMENTS specialty, group,  year, rating, attendance
 
@@ -129,6 +134,15 @@ public:
 	}
 };
 
+std::ostream& operator<<(std::ostream& os, const Student& obj)
+{
+	return os << (Human&)obj << " "
+		<< obj.get_specialty() << " "
+		<< obj.get_group() << " "
+		<< obj.get_year() << " "
+		<< obj.get_rating() << " "
+		<< obj.get_attendance();
+}
 #define TEACHER_PARAMETERS const std::string& specialty, unsigned int eperience
 #define TEACHER_ARGUMENTS specialty, eperience
 
@@ -241,7 +255,12 @@ void main()
 	
 	for (int i = 0; i < sizeof(group) / sizeof(group[0]); i++)
 	{
-		group[i]->info();
+		//group[i]->info();
+		cout << typeid(*group[i]).name() << endl;
+		//cout << *group[i] << endl;
+		if (typeid(*group[i]) == typeid(Student))cout << *dynamic_cast<Student*>(group[i]) << endl;
+		if (typeid(*group[i]) == typeid(Student))cout << *dynamic_cast<Teacher*>(group[i]) << endl;
+		//if (typeid(*group[i]) == typeid(Student))cout << *dynamic_cast<Graduate**>(group[i]) << endl;
 		cout << "\n-------------------------------------------------------\n";
 	}
 
@@ -251,4 +270,5 @@ void main()
 		delete group[i];
 
 	}
+
 }
