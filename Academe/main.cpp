@@ -10,7 +10,7 @@ class Human
 {
 	std::string last_name;
 	std::string first_name;
-	unsigned int  age;
+	unsigned int age;
 public:
 	const std::string& get_last_name()const
 	{
@@ -53,7 +53,15 @@ public:
 	{
 		cout << last_name << " " << first_name << " " << age << " " << "yars\n";
 	}
+	virtual std::ostream& print(std::ostream& os = cout)const
+	{
+		return os << last_name << " " << first_name << " " << age;
+	}
 };
+std::ostream& operator<< (std::ostream& os, const Human& obj)
+{
+	return obj.print(os);
+}
 
 #define STUDENT_PARAMETERS const std::string& specialty, const std::string& group, unsigned int year, float rating, float attendance
 #define STUDENT_ARGUMENTS specialty, group,  year, rating, attendance
@@ -127,6 +135,16 @@ public:
 		Human::info();
 		cout << specialty << " " << group << " " << year << " " << rating << " " << attendance << endl;
 	}
+	std::ostream& print(std::ostream& os)const
+	{
+		return Human::print(os) << " "
+			<< specialty << " "
+			<< group << " "
+			<< year << " "
+			<< rating << " "
+			<< attendance;
+	}
+	
 };
 
 #define TEACHER_PARAMETERS const std::string& specialty, unsigned int eperience
@@ -168,6 +186,10 @@ public:
 	{
 		cout << specialty << " " << experience << endl;
 	}
+	std::ostream& print(std::ostream& os)const
+	{
+		return Human::print(os) << " " << specialty << "" << experience;
+	}
 };
 
 class Graduate :public Student
@@ -197,6 +219,10 @@ public:
 	{
 		Student::info();
 		cout << " " << subject << endl;
+	}
+	std::ostream& print(std::ostream& os)const
+	{
+		return Student::print(os) << " " << subject;
 	}
 };
 
@@ -241,7 +267,9 @@ void main()
 	
 	for (int i = 0; i < sizeof(group) / sizeof(group[0]); i++)
 	{
-		group[i]->info();
+		//group[i]->info();
+		//cout << *group[i] << endl;
+		group[i]->print();
 		cout << "\n-------------------------------------------------------\n";
 	}
 
@@ -251,4 +279,6 @@ void main()
 		delete group[i];
 
 	}
+
+
 }
