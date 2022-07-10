@@ -1,4 +1,5 @@
 #include<iostream>
+#include<fstream>
 
 using namespace std;
 
@@ -55,7 +56,15 @@ public:
 	}
 	virtual std::ostream& print(std::ostream& os = cout)const
 	{
-		return os << last_name << " " << first_name << " " << age;
+		//return os << last_name << " " << first_name << " " << age;
+		os.width(15);
+		os << std::left;
+		os << last_name;
+		os.width(15);
+		os << first_name;
+		os.width(5);
+		os << age;
+		return os;
 	}
 };
 std::ostream& operator<< (std::ostream& os, const Human& obj)
@@ -137,18 +146,30 @@ public:
 	}
 	std::ostream& print(std::ostream& os)const
 	{
-		return Human::print(os) << " "
+		/*return Human::print(os) << " "
 			<< specialty << " "
 			<< group << " "
 			<< year << " "
 			<< rating << " "
-			<< attendance;
+			<< attendance;*/
+		Human::print(os);
+		os.width(20);
+		os << specialty;
+		os.width(8);
+		os << group;
+		os.width(3);
+		os << year;
+		os.width(8);
+		os << rating;
+		os.width(8);
+		os << attendance;
+		return os;
 	}
 	
 };
 
-#define TEACHER_PARAMETERS const std::string& specialty, unsigned int eperience
-#define TEACHER_ARGUMENTS specialty, eperience
+#define TEACHER_PARAMETERS const std::string& specialty, unsigned int experience
+#define TEACHER_ARGUMENTS specialty, experience
 
 class Teacher :public Human
 {
@@ -176,6 +197,7 @@ public:
 	Teacher(HUMAN_PARAMETERS, TEACHER_PARAMETERS) :Human(HUMAN_ARGUMENTS)
 	{
 		set_specialty(specialty);
+		set_experience(experience);
 	}
 	~Teacher()
 	{
@@ -188,7 +210,13 @@ public:
 	}
 	std::ostream& print(std::ostream& os)const
 	{
-		return Human::print(os) << " " << specialty << "" << experience;
+		//return Human::print(os) << " " << specialty << "" << experience;
+		Human::print(os);
+		os.width(20);
+		os << specialty;
+		os.width(15);
+		os << experience;
+		return os;
 	}
 };
 
@@ -263,22 +291,23 @@ void main()
 		new Student("Vercetti", "Tomas", 30, "Criminal", "Vice", 2, 95, 98)
 	};
 	
-	cout << "\n-------------------------------------------------------\n";
-	
+	cout << "\n-------------------------------------------------------\n" << endl;
+	ofstream fout("Academy.txt");
 	for (int i = 0; i < sizeof(group) / sizeof(group[0]); i++)
 	{
 		//group[i]->info();
-		//cout << *group[i] << endl;
-		group[i]->print();
-		cout << "\n-------------------------------------------------------\n";
+		cout << *group[i] << endl;
+		fout << *group[i] << endl;
+		//group[i]->print();
+		cout << "\n-------------------------------------------------------\n" << endl;
 	}
-
+	fout.close();
 	for (int i = 0; i < sizeof(group) / sizeof(group[0]); i++)
 	{
 	
 		delete group[i];
 
 	}
-
+	system("start notepad Academy.txt");
 
 }
