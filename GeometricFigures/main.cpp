@@ -1,112 +1,116 @@
-#include <iostream>
-#include <fstream>
-#include <string>
+#include "Stdafx.h"
 
-using namespace std;
-
-using std::cin;
-using std::cout;
-using std::endl;
-
-enum Defaults
-{
-	size = NULL,
-	diagonal = NULL,
-	width = NULL,
-	height = NULL
-};
+//enum Defaults
+//{
+//	size = NULL,
+//	diagonal = NULL,
+//	width = NULL,
+//	height = NULL
+//};
 
 class Square
 {
-	double side;
-	double diagonal;
+	float side;
 public:
-	double get_side()const
+	float get_side()const
 	{
 		return side;
 	}
-	
-	double get_diagonal()const
-	{
-		return diagonal;
-	}
 
-	void set_side(double side)
+	void set(float side)
 	{
 		this->side = side;
-	}
-
-	void set_diagonal(double diagonal)
-	{
-		this->diagonal = diagonal;
 	}
 
 	Square()
 	{
 		this->side = 0;
-		this->diagonal = 0;
 		cout << "DefaultConstructor:\t" << this << endl;
+	}
+	Square(float side)
+	{
+		this->side = side;
+		cout << "Constructor:\t\t" << this << endl;
+
 	}
 	~Square()
 	{
 		cout << "Destructor: \t\t" << this << endl;
 	}
+
+	void Perimeter()
+	{
+		cout << "Периметр: " << side * 4 << endl;
+	}
+	void Square1()
+	{
+		cout << "Площадь: " << side * side << endl;
+	}
+	void print()
+	{
+		cout << "Сторона квадрата: " << this->side << endl;
+	}
 };
+
+
+
 
 class Rectangle
 {
 	float width;
 	float height;
-	//float diagonal;
 
 public:
-	double get_width()const
+	float get_width()const
 	{
 		return width;
 	}
-	double get_height()const
+	float get_height()const
 	{
 		return height;
 	}
-	/*double get_diagonal()const
-	{
-		return diagonal;
-	}*/
+	
 
-	void set_width(float width)
+	void set(float width, float height)
 	{
 		this->width = width;
-	}
-	
-	void set_height(float height)
-	{
 		this->height = height;
-	}
-
-	/*void set_diagonal(double diagonal)
-	{
-		this->diagonal = diagonal;
-	}*/
-
-	void get()
-	{
-		cout << "Высота: " << height << "\nШирина: " << width << endl;
 	}
 
 	Rectangle()
 	{
 		this->width = 0;
 		this->height = 0;
-		cout << "DefaultConstructor:\t" << this << endl;
+		cout << "DefaultConstructorRectangle:\t" << this << endl;
+	}
+	Rectangle(float width, float height)
+	{
+		this->width = width;
+		this->height = height;
+		cout << "ConstructorRectangle:\t\t" << this << endl;
 	}
 	~Rectangle()
 	{
-		cout << "Destructor: \t\t" << this << endl;
+		cout << "DestructorRectangle: \t\t" << this << endl;
 	}
+
+
 	void Perimeter()
-	{}
+	{
+		cout << "Периметр: " << (height + width) * 2 << endl;
+	}
 	void Square()
-	{}
+	{
+		cout << "Площадь: " << height * width << endl;
+	}
+
+	
+	void print()
+	{
+		cout << "Высота: " << this->height << "\nШирина: " << this->width << std::endl;
+	}
+
+
 
 };
 
@@ -119,9 +123,38 @@ class Cicle
 public:
 };
 
+//#define RECTANGLE
+//#define SQUARE
+
 void main()
 
 {
 	setlocale(LC_ALL, "");
+#ifdef RECTANGLE
+	Rectangle A;
+	A.print();
+	float a, b;
+	cout << "Введите ширину и высоту через пробел: ";
+	cin >> a >> b;
+	A.set(a, b);
+	A.print();
+	A.Perimeter();
+	A.Square();
+#endif // RECTANGLE
+
+#ifdef SQUARE
+	Square A;
+	A.print();
+	float a;
+	cout << "Введите размер стороны квадрата: ";
+	cin >> a;
+	A.set(a);
+	A.print();
+	A.Perimeter();
+	A.Square1();
+#endif // SQUARE
+
+
+	system("pause");
 
 }
