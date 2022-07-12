@@ -10,15 +10,10 @@ using std::endl;
 
 enum Defaults
 {
-	type_width = 15,
-	last_name_width = 15,
-	first_name_width = 10,
-	age_width = 5,
-	speciality_width = 25,
-	group_width = 8,
-	year_width = 3,
-	reating_width = 8,
-	attendance_width = 8
+	size = NULL,
+	diagonal = NULL,
+	width = NULL,
+	height = NULL
 };
 
 class Square
