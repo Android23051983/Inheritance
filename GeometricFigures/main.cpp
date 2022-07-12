@@ -118,13 +118,53 @@ class Triangle
 {
 public:
 };
-class Cicle
+class Circle
 {
+	float radius;
+	float Pi;
 public:
+	float get_radius()const
+	{
+		return radius;
+	}
+
+	float get_Pi()const
+	{
+		return Pi;
+	}
+
+	void set(float radius)
+	{
+		this->radius = radius;
+		this->Pi = 3.14;
+	}
+
+	Circle()
+	{
+		this->radius = 0;
+		this->Pi =3.14;
+		cout << "DefaultConstructor:\t" << this << endl;
+	}
+	Circle(float radius)
+	{
+		this->radius = radius;
+		this->Pi = 3.14;
+		cout << "Constructor:\t\t" << this << endl;
+	}
+	~Circle()
+	{
+		cout << "Destructor: \t\t" << this << endl;
+	}
+
+	void print()
+	{
+		cout << "Радиус: " << this->radius << "\nПИ: " << this->Pi << endl;
+	}
 };
 
 //#define RECTANGLE
 //#define SQUARE
+#define CIRCLE
 
 void main()
 
@@ -153,6 +193,17 @@ void main()
 	A.Perimeter();
 	A.Square1();
 #endif // SQUARE
+
+#ifdef CIRCLE
+	Circle A;
+	A.print();
+	double a;
+	cout << "Введите радиус круга: ";
+	cin >> a;
+	A.set(a);
+	A.print();
+	
+#endif // CIRCLE
 
 
 	system("pause");
