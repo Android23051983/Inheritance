@@ -9,9 +9,32 @@ public:
 
 	virtual void calc_Square() {};
 	virtual void calc_Perimeter() {};
-	//virtual void print() const = 0;
-};
 
+	/*virtual std::ostream& print(std::ostream& os)const
+	{
+		return os;
+	}
+
+	virtual std::ofstream& print(std::ofstream& ofs)
+	{
+		return ofs;
+	}
+
+	virtual std::ifstream& scan(std::ifstream& ifs)
+	{
+		return ifs;
+	}
+	std::ostream& operator<< (std::ostream& os, const Figure& obj)
+	{
+		obj.print(ofs);
+		return obj.print(os);
+	}
+	std::ifstream& operator>>(std::ifstream& ifs, Figure& obj)
+	{
+		obj.scan(ifs);
+		return ifs;
+	}*/
+};
 class Square: public Figure
 {
 	float side;
@@ -238,6 +261,7 @@ public:
 //#define CIRCLE
 //#define DELETE
 
+
 void main()
 
 {
@@ -287,17 +311,20 @@ void main()
 	A.calc_Square();
 #endif // CIRCLE
 #ifdef TRIANGLE
-	cout << "\nFigure #4 (triangle):" << endl;
+	//cout << "\nFigure #4 (triangle):" << endl;
 	//cout << "ВВедите..." << endl;
 	//figure[3] = new Triangle(3, 4, 5); //Создаем треугольник со сторонами 3, 4, 5
 	//figure[3]->calc_Square();
 	//figure[3]->calc_Perimeter();
+
+
 	Triangle A;
 	A.print();
 	A.set(3,4,5);
 	A.print();
 	A.calc_Perimeter();
 	A.calc_Square();
+
 #endif // TRIANGLE
 
 #ifdef DELETE
