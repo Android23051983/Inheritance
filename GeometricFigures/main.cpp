@@ -81,7 +81,6 @@ public:
 	}
 };
 
-
 class Rectangle: public Figure
 {
 	float width;
@@ -199,6 +198,7 @@ public:
 		cout << "Сторона a: " << a << "\nСторона b: " << b << "\nСторона c: " << c << endl;
 	}
 };
+
 class Circle: public Figure
 {
 	float radius;
