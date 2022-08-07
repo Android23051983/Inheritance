@@ -1,5 +1,6 @@
-#include <iostream>
+#include<iostream>
 #include<Windows.h>
+#include<math.h>
 
 using namespace std;
 
@@ -32,10 +33,13 @@ namespace Geometry
 
 		primary_size_min = 5,
 		primary_size_max = 500,
+		radius = 200
 
 	};
 #define SHAPE_TAKE_PARAMETERS Color color, unsigned int start_x, unsigned int start_y, unsigned int line_width
+#define Triangle_TAKE_PARAMETERS double side_a, double side_b, double side_c
 #define SHAPE_GIVE_PARAMETERS color, start_x, start_y, line_width
+#define Triangle_GIVE_PARAMETERS side_a, side_b, side_c
 
 	class Shape
 	{
@@ -94,8 +98,8 @@ namespace Geometry
 
 		virtual void info()const
 		{
-			cout << "Площадь фигуры" << get_area() << endl;
-			cout << "Периметр фигуры" << get_perimeter() << endl;
+			cout << "Площадь фигуры " << get_area() << endl;
+			cout << "Периметр фигуры " << get_perimeter() << endl;
 			draw();
 		}
 	};
@@ -175,7 +179,7 @@ namespace Geometry
 		void set_height(double height)
 		{
 			if (height < Defaults::primary_size_min)height = Defaults::primary_size_min;
-			if (width > Defaults::primary_size_max)height = Defaults::primary_size_max;
+			if (height > Defaults::primary_size_max)height = Defaults::primary_size_max;
 			this->height = height;
 		}
 
@@ -236,8 +240,8 @@ namespace Geometry
 		void info()const
 		{
 			cout << typeid(*this).name() << endl;
-			cout << "" << get_width() << endl;
-			cout << "" << get_height() << endl;
+			cout << "Длинна" << get_width() << endl;
+			cout << "Высота" << get_height() << endl;
 			Shape::info();
 		}
 
@@ -252,23 +256,194 @@ namespace Geometry
 		void info()const
 		{
 			cout << typeid(*this).name() << endl;
-			cout << "Длинна сторонв" << get_width() << endl;
+			cout << "Длинна стороны" << get_width() << endl;
 			Shape::info();
 		}
 	};
+
+	class Triangle :public Shape
+	{
+	protected:
+		double side_a;
+		double side_b;
+		double side_c;
+	public:
+		double get_side_a()const
+		{
+			return side_a;
+		}
+		double get_side_b()const
+		{
+			return side_b;
+		}
+		double get_side_c()const
+		{
+			return side_c;
+		}
+		void set_side_a(double side_a)
+		{
+			this->side_a = side_a;
+		}
+		void set_side_b(double side_b)
+		{
+			this->side_b = side_b;
+		}
+		void set_side_c(float side_c)
+		{
+			this->side_c = side_c;
+		}
+
+		Triangle(Triangle_TAKE_PARAMETERS, SHAPE_TAKE_PARAMETERS) : Shape(SHAPE_GIVE_PARAMETERS)
+		{
+			set_side_a(side_a);
+			set_side_b(side_b);
+			set_side_c(side_c);
+
+		}
+		virtual ~Triangle() {}
+
+		virtual double get_area()const = 0;
+		virtual double get_perimeter()const = 0;
+		virtual void draw()const = 0;
+
+		virtual void info()const
+		{
+			cout << typeid(*this).name() << endl;
+			Shape::info();
+		}
+	};
+
+	class Triangle_1 : public Triangle
+	{
+
+	protected:
+		
+
+	public:
+		
+		double get_area()const
+		{
+			unsigned int p = (side_a + side_b + side_c) /2;
+			unsigned int area = sqrt(p * (p - side_a) * (p - side_b) * (p - side_c));
+			return area;
+		}
+		double get_perimeter()const
+		{
+			return side_a + side_b + side_c;
+		}
+		Triangle_1( Triangle_TAKE_PARAMETERS, SHAPE_TAKE_PARAMETERS) : Triangle(Triangle_GIVE_PARAMETERS, SHAPE_GIVE_PARAMETERS)
+		{
+		
+		}
+
+
+		~Triangle_1() {}
+
+		void info()const
+		{
+			//cout << typeid(*this).name() << endl;
+			//cout << "" << get_width() << endl;
+			//cout << "" << get_height() << endl;
+			cout << "Высота " << Triangle_1::get_height() << endl;
+			Triangle::info();
+			
+		}
+
+		double get_height()const
+		{
+			return 2 * get_area() / side_c;
+		}
+		void draw()const
+		{
+			HWND hwnd = GetConsoleWindow();
+			//Получчаем контекст устройства для нашего окна консоли
+			HDC hdc = GetDC(hwnd);
+			//Создаём карандаш
+			HPEN hPen = CreatePen(PS_SOLID, line_width, color);
+			//Создаём кисть:
+			HBRUSH hBrush = CreateSolidBrush(color);
+			//hPen и hBrush - это то, чем мы будем рисовать
+
+			//Выбираем, чем и на чём будем рисовать
+			SelectObject(hdc, hPen);
+			SelectObject(hdc, hBrush);
+
+			POINT poly[3] = { {start_x, start_y}, {start_x - side_c / 2, start_y + get_height()}, {start_x + side_c / 2, start_y + get_height()} };
+			Polygon(hdc, poly, 3);
+			
+		}
+	};
+
+	class Ellipse : public Triangle
+	{
+		
+	protected:
+		
+
+	public:
+	
+		double Triangle_g()const
+		{
+			double g = sqrt((side_a * side_a) + (side_b * side_b));
+			return g;
+		}
+		Ellipse(Triangle_TAKE_PARAMETERS, SHAPE_TAKE_PARAMETERS) : Triangle(Triangle_GIVE_PARAMETERS, SHAPE_GIVE_PARAMETERS)
+		{
+
+		}
+
+		~Ellipse() {}
+		double get_area()const
+		{
+			return Triangle_g() * 3.14;
+		}
+		double get_perimeter()const
+		{
+			return 2*3.14*(Triangle_g()/2);
+		}
+		void draw()const
+		{
+			HWND hwnd = GetConsoleWindow();//Получчаем окно консоли
+			HDC hdc = GetDC(hwnd);//Получчаем контекст устройства для нашего окна консоли
+			HPEN hPen = CreatePen(PS_SOLID, line_width, color);//Создаём карандаш
+			HBRUSH hBrush = CreateSolidBrush(color);//Создаём кисть:
+			//hPen и hBrush - это то, чем мы будем рисовать
+
+			//Выбираем, чем и на чём будем рисовать
+			SelectObject(hdc, hPen);
+			SelectObject(hdc, hBrush);
+			::Ellipse(hdc, start_x, start_y, start_x + side_c + Triangle_g(), start_y + side_a + Triangle_g());
+			DeleteObject(hPen);
+			DeleteObject(hBrush);
+			ReleaseDC(hwnd, hdc);
+		}
+
+	};
+
+	
 }
 
 void main()
 {
 	setlocale(LC_ALL, "");
 	//Shape shape(Color::console_blue, 0, 0, 1);
-	Geometry::Square square(55, Geometry::Color::console_red, 100, 200, 5);
+	Geometry::Square square(55, Geometry::Color::console_red, 600, 200, 5);
 	/*cout << "Длинна стороны: " << square.get_side() << endl;
 	cout << "Площадь квадрата: " << square.get_area() << endl;
 	cout << "Площадь квадрата: " << square.get_perimeter() << endl;
 	square.draw();*/
+	square.info();
 	square.draw();
-	Geometry::Rectangle rect(100, 70, Geometry::Color::green, 500, 200, 5);
+	Geometry::Rectangle rect(100, 70, Geometry::Color::green, 1000, 100, 5);
+	rect.info();
 	rect.draw();
-
+	Geometry::Triangle_1 tr(150, 150, 150, Geometry::Color::green, 900, 200, 5);
+	tr.info();
+	tr.draw();
+	Geometry::Ellipse el(100, 141,100, Geometry::Color::green, 900, 400, 5);
+	//cout << el.get_area() << endl;
+	//cout << el.get_perimeter() << endl;
+	el.draw();
+	el.info();
+	cin.get();
 }

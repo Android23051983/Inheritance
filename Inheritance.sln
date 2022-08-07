@@ -13,6 +13,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GeometricFigures", "Geometr
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Geometry", "Geometry\Geometry.vcxproj", "{BBE9EEF6-A2B7-4EC5-B4C3-4A06FD7A5239}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenGL", "OpenGL\OpenGL.vcxproj", "{305328A2-5074-4521-960B-7831711B7C7A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -61,6 +63,14 @@ Global
 		{BBE9EEF6-A2B7-4EC5-B4C3-4A06FD7A5239}.Release|x64.Build.0 = Release|x64
 		{BBE9EEF6-A2B7-4EC5-B4C3-4A06FD7A5239}.Release|x86.ActiveCfg = Release|Win32
 		{BBE9EEF6-A2B7-4EC5-B4C3-4A06FD7A5239}.Release|x86.Build.0 = Release|Win32
+		{305328A2-5074-4521-960B-7831711B7C7A}.Debug|x64.ActiveCfg = Debug|x64
+		{305328A2-5074-4521-960B-7831711B7C7A}.Debug|x64.Build.0 = Debug|x64
+		{305328A2-5074-4521-960B-7831711B7C7A}.Debug|x86.ActiveCfg = Debug|Win32
+		{305328A2-5074-4521-960B-7831711B7C7A}.Debug|x86.Build.0 = Debug|Win32
+		{305328A2-5074-4521-960B-7831711B7C7A}.Release|x64.ActiveCfg = Release|x64
+		{305328A2-5074-4521-960B-7831711B7C7A}.Release|x64.Build.0 = Release|x64
+		{305328A2-5074-4521-960B-7831711B7C7A}.Release|x86.ActiveCfg = Release|Win32
+		{305328A2-5074-4521-960B-7831711B7C7A}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
