@@ -321,16 +321,7 @@ namespace Geometry
 
 	public:
 		
-		double get_area()const
-		{
-			unsigned int p = (side_a + side_b + side_c) /2;
-			unsigned int area = sqrt(p * (p - side_a) * (p - side_b) * (p - side_c));
-			return area;
-		}
-		double get_perimeter()const
-		{
-			return side_a + side_b + side_c;
-		}
+		
 		Triangle_1( Triangle_TAKE_PARAMETERS, SHAPE_TAKE_PARAMETERS) : Triangle(Triangle_GIVE_PARAMETERS, SHAPE_GIVE_PARAMETERS)
 		{
 		
@@ -338,6 +329,23 @@ namespace Geometry
 
 
 		~Triangle_1() {}
+
+		double get_area()const
+		{
+			unsigned int p = (side_a + side_b + side_c) / 2;
+			unsigned int area = sqrt(p * (p - side_a) * (p - side_b) * (p - side_c));
+			return area;
+		}
+		double get_perimeter()const
+		{
+			return side_a + side_b + side_c;
+		}
+
+
+		double get_height()const
+		{
+			return 2 * get_area() / side_c;
+		}
 
 		void info()const
 		{
@@ -349,10 +357,6 @@ namespace Geometry
 			
 		}
 
-		double get_height()const
-		{
-			return 2 * get_area() / side_c;
-		}
 		void draw()const
 		{
 			HWND hwnd = GetConsoleWindow();
@@ -374,6 +378,40 @@ namespace Geometry
 		}
 	};
 
+	class Triangle_2 : public Triangle
+	{
+	protected:
+
+
+	public:
+
+
+		Triangle_2(Triangle_TAKE_PARAMETERS, SHAPE_TAKE_PARAMETERS) : Triangle(Triangle_GIVE_PARAMETERS, SHAPE_GIVE_PARAMETERS)
+		{
+
+		}
+
+		double get_area()const
+		{
+			unsigned int p = (side_a + side_b + side_c) / 2;
+			unsigned int area = sqrt(p * (p - side_a) * (p - side_b) * (p - side_c));
+			return area;
+		}
+		double get_perimeter()const
+		{
+			return side_a + side_b + side_c;
+		}
+
+	~Triangle_2() {}
+
+	double Triangle_g()const
+	{
+		double g = sqrt((side_a * side_a) + (side_b * side_b));
+		return g;
+	}
+
+	};
+
 	class Ellipse : public Triangle
 	{
 		
@@ -382,12 +420,7 @@ namespace Geometry
 
 	public:
 	
-		double Triangle_g()const
-		{
-			double g = sqrt((side_a * side_a) + (side_b * side_b));
-			return g;
-		}
-		Ellipse(Triangle_TAKE_PARAMETERS, SHAPE_TAKE_PARAMETERS) : Triangle(Triangle_GIVE_PARAMETERS, SHAPE_GIVE_PARAMETERS)
+		Ellipse(Triangle_TAKE_PARAMETERS, SHAPE_TAKE_PARAMETERS) : Triangle_2(Triangle_GIVE_PARAMETERS, SHAPE_GIVE_PARAMETERS)
 		{
 
 		}
