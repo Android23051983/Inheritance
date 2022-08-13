@@ -412,7 +412,7 @@ namespace Geometry
 
 	};
 
-	class Ellipse : public Triangle
+	class Ellipse : public Triangle_2
 	{
 		
 	protected:
