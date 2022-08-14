@@ -352,8 +352,8 @@ namespace Geometry
 			//cout << typeid(*this).name() << endl;
 			//cout << "" << get_width() << endl;
 			//cout << "" << get_height() << endl;
-			cout << "Высота " << Triangle_1::get_height() << endl;
 			Triangle::info();
+			cout << "Высота " << Triangle_1::get_height() << endl;
 			
 		}
 
@@ -482,7 +482,7 @@ void main()
 	Geometry::Triangle_1 tr(150, 150, 150, Geometry::Color::green, 900, 200, 5);
 	tr.info();
 	tr.draw();
-	Geometry::Ellipse el(100, 141,100, Geometry::Color::green, 900, 400, 5);
+	Geometry::Ellipse el(100, 141,100, Geometry::Color::blue, 900, 400, 5);
 	//cout << el.get_area() << endl;
 	//cout << el.get_perimeter() << endl;
 	el.draw();
