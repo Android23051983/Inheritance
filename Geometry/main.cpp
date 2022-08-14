@@ -382,7 +382,6 @@ namespace Geometry
 	{
 	protected:
 
-
 	public:
 
 
@@ -390,6 +389,9 @@ namespace Geometry
 		{
 
 		}
+
+
+	~Triangle_2() {}
 
 		double get_area()const
 		{
@@ -402,13 +404,11 @@ namespace Geometry
 			return side_a + side_b + side_c;
 		}
 
-	~Triangle_2() {}
-
-	double Triangle_g()const
-	{
-		double g = sqrt((side_a * side_a) + (side_b * side_b));
-		return g;
-	}
+		double Triangle_g()const
+		{
+			double g = sqrt((side_a * side_a) + (side_b * side_b));
+			return g;
+		}
 
 	};
 
@@ -416,9 +416,18 @@ namespace Geometry
 	{
 		
 	protected:
-		
+		unsigned int radius;
 
 	public:
+
+		unsigned int get_radius()const
+		{
+			return radius;
+		}
+		void set_radius(unsigned int radius)
+		{
+			this->radius = radius;
+		}
 	
 		Ellipse(Triangle_TAKE_PARAMETERS, SHAPE_TAKE_PARAMETERS) : Triangle_2(Triangle_GIVE_PARAMETERS, SHAPE_GIVE_PARAMETERS)
 		{
