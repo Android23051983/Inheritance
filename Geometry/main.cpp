@@ -468,6 +468,17 @@ namespace Geometry
 //	}
 //};  
 #endif // HOME_WORK
+#ifdef HOME_WORK2
+class Paralelogram :public Shape
+{
+	public:
+
+};
+class Trapezoid :public Paralelogram
+{
+
+};
+#endif // HOME_WORK2
 
 	class Circle :public Shape
 	{
@@ -665,6 +676,10 @@ namespace Geometry
 			ReleaseDC(hwnd, hdc);
 		}
 		
+	};
+	class My_Ellipse :public Circle
+	{
+	public:
 	};
 	
 }
