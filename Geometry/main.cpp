@@ -677,11 +677,6 @@ class Trapezoid :public Paralelogram
 		}
 		
 	};
-	class My_Ellipse :public Circle
-	{
-	public:
-	};
-	
 }
 
 void main()
