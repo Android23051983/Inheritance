@@ -42,7 +42,8 @@ namespace Geometry
 #define Triangle_TAKE_PARAMETERS double side_a, double side_b, double side_c
 #define SHAPE_GIVE_PARAMETERS color, start_x, start_y, line_width, filled
 #define Triangle_GIVE_PARAMETERS side_a, side_b, side_c
-
+//#define HOME_WORK
+#define HOME_WORK2
 	class Shape
 	{
 	protected:
